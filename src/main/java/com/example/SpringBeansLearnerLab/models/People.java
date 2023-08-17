@@ -16,7 +16,7 @@ public abstract class People<PersonType extends Person> implements Iterable<Pers
     }
 
     public People(PersonType... people){
-        this.personList = new ArrayList<>(List.of(people));
+        this.personList = List.of(people);
     }
 
     public void add(PersonType pt){
