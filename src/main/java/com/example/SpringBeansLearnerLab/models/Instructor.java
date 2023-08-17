@@ -14,5 +14,6 @@ public class Instructor extends Person implements Teacher{
     public void lecture(Iterable<? extends Learner> learners, double numberOfHours) {
         double numOfLearners = ((People) learners).size();
         double numberOfHoursPerLearner = numberOfHours / numOfLearners;
+        learners.forEach(l -> teach(l, numberOfHoursPerLearner));
     }
 }
