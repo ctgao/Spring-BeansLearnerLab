@@ -1,11 +1,14 @@
 package com.example.SpringBeansLearnerLab.models;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+@Repository
 public abstract class People<PersonType extends Person> implements Iterable<PersonType> {
-    List<PersonType> personList;
+    private List<PersonType> personList;
 
     public People(){
         personList = new ArrayList<>();
@@ -16,7 +19,7 @@ public abstract class People<PersonType extends Person> implements Iterable<Pers
     }
 
     public People(PersonType... people){
-        this.personList = List.of(people);
+        this.personList = new ArrayList<>(List.of(people));
     }
 
     public void add(PersonType pt){
@@ -28,7 +31,7 @@ public abstract class People<PersonType extends Person> implements Iterable<Pers
     }
 
     public int size(){
-        personList.size();
+        return personList.size();
     }
 
     public void addAll(Iterable<PersonType> people){
@@ -52,5 +55,14 @@ public abstract class People<PersonType extends Person> implements Iterable<Pers
     @Override
     public Iterator<PersonType> iterator() {
         return personList.iterator();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (PersonType pt: this){
+            sb.append(pt);
+        }
+        return sb.toString();
     }
 }

@@ -1,25 +1,27 @@
 package com.example.SpringBeansLearnerLab.configurations;
 
+import com.example.SpringBeansLearnerLab.models.Instructor;
 import com.example.SpringBeansLearnerLab.models.Instructors;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class InstructorConfig {
-    @Bean
+    @Bean(name = "tcUsaInstructors")
     public Instructors tcUsaInstructors(){
-        return null;
+        return new Instructors(new Instructor(5L, "Minsoo"));
     }
 
-    @Bean
-    public Instructors toUkInstructors(){
-        return null;
+    @Bean(name = "tcUkInstructors")
+    public Instructors tcUkInstructors(){
+        return new Instructors(new Instructor(6L, "Dima"));
     }
 
     @Primary
-    @Bean("instructors")
+    @Bean(name = "instructors")
     public Instructors getInstructors(){
-        return null;
+        return new Instructors(new Instructor(1L, "Kris"));
     }
 }
