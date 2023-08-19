@@ -2,7 +2,6 @@ package com.example.SpringBeansLearnerLab.configurations;
 
 import com.example.SpringBeansLearnerLab.models.Instructor;
 import com.example.SpringBeansLearnerLab.models.Instructors;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -22,6 +21,7 @@ public class InstructorConfig {
     @Primary
     @Bean(name = "instructors")
     public Instructors getInstructors(){
-        return new Instructors(new Instructor(1L, "Kris"));
+        return new Instructors(new Instructor(1L, "Kris"),
+                new Instructor(9L, "Dolio"));
     }
 }
